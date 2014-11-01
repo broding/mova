@@ -1,12 +1,18 @@
 package nl.basroding.mova;
 
-public class Action 
-{
+public abstract class Action {
     
-    private Context context;
-    
-    public void setContext(Context context)
+    private Model model;
+
+    void setup(Model parentModel)
     {
-        this.context = context;
+        model = parentModel;
     }
+    
+    protected Model getModel()
+    {
+        return model;
+    }
+    
+    public abstract boolean run();
 }

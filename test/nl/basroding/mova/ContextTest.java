@@ -6,12 +6,13 @@
 
 package nl.basroding.mova;
 
+import nl.basroding.mova.dummy.views.CheckLoginData;
+import nl.basroding.mova.dummy.views.LoginView;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -28,7 +29,11 @@ public class ContextTest
     @BeforeClass
     public static void setUpClass()
     {
-        Context context = new Context() {};
+        Context context = new Context() {
+        };
+        
+        context.getMapper().map(LoginView.NameEnteredEvent.class, CheckLoginData.class);
+        context.run();
     }
     
     @AfterClass
@@ -49,8 +54,10 @@ public class ContextTest
     @Test
     public void testSomeMethod()
     {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        LoginView view = new LoginView();
+        view.doSomething();
+        
+        assert(true);
     }
     
 }
